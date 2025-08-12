@@ -16,9 +16,7 @@ For GitHub, the process is pretty straightforward. However, note that GitHub doe
 
 Therefore, make sure your DNS is set to Namecheap Basic DNS.
 
-    ![alt text](image-2.png)
-
-Go in the advanced DNS tab and add the followiing IPs as A records in the Host section.
+Go in the *Advanced DNS* tab and add the followiing IPs as A records in the Host section.
 
 ```
 185.199.108.153
@@ -31,11 +29,30 @@ Go in the advanced DNS tab and add the followiing IPs as A records in the Host s
 
 The @ is the apex domain (i.e your domain name) as required by GitHub
 
-Be aware that it might take a couple hours before DNS propagation is done.
+Also add a CNAME record with your GitHub username before the `.github.io` string.
 
-![alt text](image-5.png)
+Be aware that it might take a couple hours before DNS propagation is done. In my case, it took 15-20 minutes for everything to work.
 
-Add the domain to GitHub Pages settings (in your repo).
+![alt text](image-8.png)
+
+Add the domain to the Pages settings (in your repo) and check the `Enforce HTTPS` box.
+
+![alt text](image-7.png)
+
+You can use the dig command to see if the changes have been applied:
+```
+# Domain A records
+dig example.com
+
+# CNAME record
+dig www.example.com
+```
+
+
+
+
+
 
 You are all set and done.
 
+## Digital Ocean
